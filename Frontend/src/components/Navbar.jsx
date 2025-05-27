@@ -12,9 +12,9 @@ const Navbar = () => {
 
         {/* center */}
         <div className="flex items-center space-x-6 text-blue-700 text-base md:text-lg font-medium">
-          <Link to='/courses' className="hover:text-blue-500 transition-colors">Courses</Link>
           <Link to='/students' className="hover:text-blue-500 transition-colors">Students</Link>
-          <Link to='/payments' className="hover:text-blue-500 transition-colors">Payments</Link>
+          <Link to='/courses' className="hover:text-blue-500 transition-colors">Courses</Link>
+          <Link to='/dashboard' className="hover:text-blue-500 transition-colors">Dashboard</Link>
         </div>
 
         {/* right */}

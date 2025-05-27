@@ -4,6 +4,7 @@ import Home from "./../pages/Home";
 import Signin from "./../components/Signin";
 import Signup from "./../components/signup";
 import ProtectedRoute from "./ProtectedRoute";
+import Courses from './../pages/Courses';
 
 const router = createBrowserRouter([
   {
@@ -16,15 +17,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/courses",
-        element: <div>Courses</div>,
+        element: <Courses />,
       },
       {
         path: "/students",
-        element: <div>Students</div>,
-      },
-      {
-        path: "/payments",
-        element: <div>Payments</div>,
+        element: <Home />,
       },
       {
         path: "/signin",

@@ -1,0 +1,72 @@
+[
+  {
+    "courseId": "CSE-101",
+    "courseTitle": "Object Oriented Programming",
+    "courseFee": 10000,
+    "courseDuration": 10,
+    "startDate": "2025-06-10"
+  },
+  {
+    "courseId": "CSE-102",
+    "courseTitle": "Database Management System",
+    "courseFee": 11000,
+    "courseDuration": 9,
+    "startDate": "2025-06-10"
+  },
+  {
+    "courseId": "CSE-103",
+    "courseTitle": "Data Structures and Algorithms",
+    "courseFee": 12000,
+    "courseDuration": 12,
+    "startDate": "2025-05-05"
+  },
+  {
+    "courseId": "CSE-104",
+    "courseTitle": "Computer Networks",
+    "courseFee": 10000,
+    "courseDuration": 8,
+    "startDate": "2025-05-20"
+  },
+  {
+    "courseId": "CSE-105",
+    "courseTitle": "Machine Learning",
+    "courseFee": 10500,
+    "courseDuration": 10,
+    "startDate": "2025-06-01"
+  },
+  {
+    "courseId": "CSE-106",
+    "courseTitle": "Operating Systems",
+    "courseFee": 9000,
+    "courseDuration": 8,
+    "startDate": "2025-07-10"
+  },
+  {
+    "courseId": "CSE-107",
+    "courseTitle": "Software Architecture",
+    "courseFee": 9500,
+    "courseDuration": 10,
+    "startDate": "2025-07-15"
+  },
+  {
+    "courseId": "CSE-108",
+    "courseTitle": "Computer Architecture",
+    "courseFee": 9800,
+    "courseDuration": 9,
+    "startDate": "2025-07-20"
+  },
+  {
+    "courseId": "CSE-109",
+    "courseTitle": "Compiler Principles and Implementation",
+    "courseFee": 11500,
+    "courseDuration": 10,
+    "startDate": "2025-08-01"
+  },
+  {
+    "courseId": "CSE-110",
+    "courseTitle": "Digital System Design",
+    "courseFee": 13000,
+    "courseDuration": 11,
+    "startDate": "2025-08-10"
+  }
+]

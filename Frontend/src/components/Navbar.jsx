@@ -54,14 +54,14 @@ const Navbar = () => {
             {!isLoggedIn ? (
               <Link
                 to="/signin"
-                className="text-blue-700 hover:text-white hover:bg-blue-600 border border-blue-600 px-4 py-1 rounded-md transition-all duration-200"
+                className="text-blue-600 hover:text-white bg-white hover:bg-blue-600 border border-blue-600 px-4 py-1 rounded-md transition-all duration-200"
               >
                 Sign in
               </Link>
             ) : (
               <button
                 onClick={handleSignOut}
-                className="text-blue-600 bg-white hover:bg-red-600 hover:border-red-600 hover:text-white border border-blue-600 px-4 py-1 rounded-md transition-all duration-200"
+                className="text-blue-600 hover:text-white bg-white hover:bg-red-600 hover:border-red-600  border border-blue-600 px-4 py-1 rounded-md transition-all duration-200"
               >
                 Sign out
               </button>

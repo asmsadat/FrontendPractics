@@ -5,6 +5,7 @@ import Signin from "./../components/Signin";
 import Signup from "./../components/signup";
 import ProtectedRoute from "./ProtectedRoute";
 import Courses from './../pages/Courses';
+import Dashboard from "../pages/Dashboard";
 
 const router = createBrowserRouter([
   {
@@ -35,7 +36,7 @@ const router = createBrowserRouter([
         path: "/dashboard",
         element: (
           <ProtectedRoute>
-            <div>Dashboard</div>
+            <Dashboard />
           </ProtectedRoute>
         ),
       },

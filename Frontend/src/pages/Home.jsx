@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { IoMdAddCircleOutline } from "react-icons/io";
 import StudentCard from "./../components/StudentCard";
 
 function Home() {
@@ -50,19 +51,21 @@ function Home() {
 
   return (
     <div>
-      <button
-        onClick={() => setShowModal(true)}
-        className="bg-blue-600 border-1 text-white px-4 py-2 rounded hover:bg-white hover:text-blue-600 border-blue-600 transition"
-      >
-        Add Student
-      </button>
+      <div className="flex justify-center items-center">
+        <button
+          onClick={() => setShowModal(true)}
+          className="flex items-center gap-2 bg-blue-600 border-1 text-white px-4 py-2 rounded hover:bg-white hover:text-blue-600 border-blue-600 transition"
+        >
+          <IoMdAddCircleOutline /> Add Student
+        </button>
+      </div>
 
-      {/* Modal */}
       {showModal && (
         <div className="fixed inset-0 bg-white bg-opacity-40 flex justify-center items-center z-50">
-          <div className="bg-white rounded-lg shadow-lg border-1 border-blue-900 p-6 w-full max-w-md relative">
-            
-            <h2 className="text-xl font-semibold mb-4 text-blue-800 text-center">Add New Student</h2>
+          <div className="bg-white rounded-lg shadow-lg border border-blue-900 p-6 w-full max-w-md relative">
+            <h2 className="text-xl font-semibold mb-4 text-blue-800 text-center">
+              Add New Student
+            </h2>
             <form onSubmit={handleAddStudent} className="space-y-4">
               <input
                 type="text"
@@ -102,17 +105,17 @@ function Home() {
               />
               <div className="flex justify-between gap-6">
                 <button
-                type="submit"
-                className="w-1/2 bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
-              >
-                Add Student
-              </button>
-              <button
-              onClick={() => setShowModal(false)}
-              className="w-1/2 bg-red-500 text-white py-2 rounded hover:bg-red-700"
-            >
-              Cancel
-            </button>
+                  type="submit"
+                  className="w-1/2 bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
+                >
+                  Add Student
+                </button>
+                <button
+                  onClick={() => setShowModal(false)}
+                  className="w-1/2 bg-red-500 text-white py-2 rounded hover:bg-red-700"
+                >
+                  Cancel
+                </button>
               </div>
             </form>
           </div>

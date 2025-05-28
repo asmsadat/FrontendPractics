@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { IoMdAddCircleOutline } from "react-icons/io";
 import UserCard from "../components/UserCard";
+import useApi from "../hooks/useApi";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
@@ -18,18 +18,17 @@ const Users = () => {
     zipcode: "",
   });
 
+  const getApi = useApi("get", "https://jsonplaceholder.typicode.com/users");
+  const postApi = useApi("post", "https://jsonplaceholder.typicode.com/users");
+  const deleteApi = useApi("delete");
+
   useEffect(() => {
     const fetchUsers = async () => {
-      try {
-        const response = await axios.get(
-          "https://jsonplaceholder.typicode.com/users"
-        );
-        setUsers(response.data);
-      } catch (error) {
-        console.error("Error fetching users:", error);
+      const result = await getApi.execute();
+      if (result) {
+        setUsers(result);
       }
     };
-
     fetchUsers();
   }, []);
 
@@ -39,51 +38,48 @@ const Users = () => {
 
   const handleAddUser = async (e) => {
     e.preventDefault();
-
     const newUser = {
       id: users.length ? users[users.length - 1].id + 1 : 1,
       name: formData.name,
       username: formData.username,
-      phone: formData.phone,
       email: formData.email,
+      phone: formData.phone,
       website: formData.website,
-      company: {
-        name: formData.companyName,
-      },
       address: {
         street: formData.street,
         city: formData.city,
         zipcode: formData.zipcode,
       },
+      company: {
+        name: formData.companyName,
+      },
     };
 
-    try {
-      await axios.post("https://jsonplaceholder.typicode.com/users", newUser);
+    const postedUser = await postApi.execute(newUser);
+    if (postedUser) {
       setUsers([...users, newUser]);
-
       setFormData({
         name: "",
         username: "",
         email: "",
+        phone: "",
+        website: "",
         street: "",
         city: "",
         zipcode: "",
+        companyName: "",
       });
       setShowModal(false);
-    } catch (error) {
-      console.error("Error adding user:", error);
     }
   };
 
   const handleDeleteUser = async (id) => {
-    try {
-      await axios.delete(`https://jsonplaceholder.typicode.com/users/${id}`);
-      const updatedUsers = users.filter((user) => user.id !== id);
-      setUsers(updatedUsers);
-    } catch (error) {
-      console.error("Error deleting user:", error);
-    }
-  };
+  const url = `https://jsonplaceholder.typicode.com/users/${id}`;
+  const result = await deleteApi.execute(null, url);
+  if (result !== null) {
+    setUsers(users.filter((user) => user.id !== id));
+  }
+};
 
   return (
     <div>

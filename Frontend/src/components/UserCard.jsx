@@ -16,7 +16,7 @@ const UserCard = ({ user, onDelete }) => {
         <strong>Address: </strong>{address?.street}, {address?.city} {address?.zipcode}
       </p>
       <button
-        onClick={() => onDelete(id)}
+        onClick={() => onDelete(user.id)}
         className="flex items-center gap-1 border-2 border-r-2 rounded-md p-2 mt-2 bg-red-500 text-white hover:bg-white hover:text-red-700 hover:border-red-500 text-sm"
       >
         <MdOutlineDelete /> Delete

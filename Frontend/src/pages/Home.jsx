@@ -54,7 +54,7 @@ function Home() {
       <div className="flex justify-center items-center">
         <button
           onClick={() => setShowModal(true)}
-          className="flex items-center gap-2 bg-blue-600 border-1 text-white px-4 py-2 rounded hover:bg-white hover:text-blue-600 border-blue-600 transition"
+          className="flex items-center gap-2 bg-blue-700 border text-white px-4 py-2 rounded hover:bg-white hover:text-blue-700 border-blue-700 transition"
         >
           <IoMdAddCircleOutline /> Add Student
         </button>
@@ -106,13 +106,13 @@ function Home() {
               <div className="flex justify-between gap-6">
                 <button
                   type="submit"
-                  className="w-1/2 bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
+                  className="w-1/2 bg-blue-700 text-white py-2 rounded hover:bg-blue-900"
                 >
                   Add Student
                 </button>
                 <button
                   onClick={() => setShowModal(false)}
-                  className="w-1/2 bg-red-500 text-white py-2 rounded hover:bg-red-700"
+                  className="w-1/2 bg-red-600 text-white py-2 rounded hover:bg-red-800"
                 >
                   Cancel
                 </button>

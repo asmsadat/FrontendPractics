@@ -6,6 +6,7 @@ import Signup from "./../components/signup";
 import ProtectedRoute from "./ProtectedRoute";
 import Courses from './../pages/Courses';
 import Dashboard from "../pages/Dashboard";
+import Users from './../pages/Users';
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: "/students",
         element: <Home />,
+      },
+      {
+        path: "/users",
+        element: <Users />,
       },
       {
         path: "/signin",

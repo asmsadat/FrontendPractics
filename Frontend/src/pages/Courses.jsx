@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import StudentCard from "./../components/StudentCard";
+import { IoMdAddCircleOutline } from "react-icons/io";
 import CourseCard from './../components/CourseCard';
 
 function Courses() {
@@ -51,13 +51,15 @@ function Courses() {
 
   return (
     <div>
-      <button
+      <div className="flex justify-center items-center">
+        <button
         onClick={() => setShowModal(true)}
-        className="bg-blue-600 border-1 text-white px-4 py-2 rounded hover:bg-white hover:text-blue-600 border-blue-600 transition"
+        className="flex items-center gap-2 bg-blue-600 border-1 text-white px-4 py-2 rounded hover:bg-white hover:text-blue-600 border-blue-600 transition"
       >
-        Add Course
+        <IoMdAddCircleOutline /> Add Course
       </button>
-
+      </div>
+      
       {/* Modal */}
       {showModal && (
         <div className="fixed inset-0 bg-white bg-opacity-40 flex justify-center items-center z-50">
@@ -121,7 +123,7 @@ function Courses() {
       )}
 
       <div className="max-w-screen-xl mx-auto px-4 py-10">
-        <h1 className="text-2xl font-bold mb-6 text-blue-900">All Courses</h1>
+        <h1 className="text-2xl text-center font-bold mb-6 text-blue-900">All Courses</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {courses.map((course) => (
             <CourseCard

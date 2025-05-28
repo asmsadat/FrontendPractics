@@ -2,6 +2,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContext  } from "react";
 import { logoutUser } from "../auth/AuthManager";
 import { AuthContext } from "../context/AuthContext";
+import { RiLoginCircleLine } from "react-icons/ri";
+import { RiLogoutCircleLine } from "react-icons/ri";
 
 const Navbar = () => {
   const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
@@ -21,7 +23,7 @@ const Navbar = () => {
           <div>
             <Link
               to="/"
-              className="text-2xl font-semibold text-blue-900 hover:text-blue-700 transition-colors"
+              className="text-2xl font-semibold font-mono text-blue-900 hover:text-blue-700 transition-colors"
             >
               Student Portal
             </Link>
@@ -31,19 +33,25 @@ const Navbar = () => {
           <div className="flex items-center space-x-6 text-blue-700 text-base md:text-lg font-medium">
             <Link
               to="/students"
-              className="hover:text-blue-500 transition-colors"
+              className="hover:text-blue-500 hover:underline decoration-2 underline-offset-4 transition-colors"
             >
               Students
             </Link>
             <Link
               to="/courses"
-              className="hover:text-blue-500 transition-colors"
+              className="hover:text-blue-500 hover:underline decoration-2 underline-offset-4 transition-colors"
             >
               Courses
             </Link>
             <Link
+              to="/users"
+              className="hover:text-blue-500 hover:underline decoration-2 underline-offset-4 transition-colors"
+            >
+              Users
+            </Link>
+            <Link
               to="/dashboard"
-              className="hover:text-blue-500 transition-colors"
+              className="hover:text-blue-500 hover:underline decoration-2 underline-offset-4 transition-colors"
             >
               Dashboard
             </Link>
@@ -54,16 +62,16 @@ const Navbar = () => {
             {!isLoggedIn ? (
               <Link
                 to="/signin"
-                className="text-blue-600 hover:text-white bg-white hover:bg-blue-600 border border-blue-600 px-4 py-1 rounded-md transition-all duration-200"
+                className="flex items-center gap-1 text-blue-600 hover:text-white bg-white hover:bg-blue-600 border border-blue-600 px-4 py-1 rounded-md transition-all duration-200"
               >
-                Sign in
+                <RiLoginCircleLine /> Sign in
               </Link>
             ) : (
               <button
                 onClick={handleSignOut}
-                className="text-blue-600 hover:text-white bg-white hover:bg-red-600 hover:border-red-600  border border-blue-600 px-4 py-1 rounded-md transition-all duration-200"
+                className="flex items-center gap-1 text-blue-600 hover:text-white bg-white hover:bg-red-600 hover:border-red-600  border border-blue-600 px-4 py-1 rounded-md transition-all duration-200"
               >
-                Sign out
+                <RiLogoutCircleLine /> Sign out
               </button>
             )}
           </div>

@@ -1,3 +1,5 @@
+import { MdOutlineDelete } from "react-icons/md";
+
 const CourseCard = ({ course, onDelete }) => {
   return (
     <div className="bg-white shadow-md rounded-lg border border-gray-200 p-6 hover:border-blue-900">
@@ -18,9 +20,9 @@ const CourseCard = ({ course, onDelete }) => {
       </p>
       <button
         onClick={() => onDelete(course.courseId)}
-        className="border-2 border-r-2 rounded-md p-2 mt-2 bg-red-500 text-white hover:bg-white hover:text-red-700 hover:border-red-500 text-sm"
+        className="flex items-center gap-1 border-2 border-r-2 rounded-md p-2 mt-2 bg-red-500 text-white hover:bg-white hover:text-red-700 hover:border-red-500 text-sm"
       >
-        Delete
+        <MdOutlineDelete /> Delete
       </button>
     </div>
   );

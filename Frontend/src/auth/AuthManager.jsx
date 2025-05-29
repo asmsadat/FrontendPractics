@@ -10,6 +10,19 @@ export const getCurrentUser = () => {
   return localStorage.getItem("loggedInUser");
 };
 
+export const getUserProfile = () => {
+  const email = getCurrentUser();
+  const profiles = JSON.parse(localStorage.getItem("profiles")) || {};
+  return profiles[email] || {};
+};
+
+export const updateUserProfile = (updatedProfile) => {
+  const email = getCurrentUser();
+  const profiles = JSON.parse(localStorage.getItem("profiles")) || {};
+  profiles[email] = { ...profiles[email], ...updatedProfile };
+  localStorage.setItem("profiles", JSON.stringify(profiles));
+};
+
 export const registerUser = (email, password) => {
   const users = JSON.parse(localStorage.getItem("users")) || [];
   if (users.find((u) => u.email === email)) return false;

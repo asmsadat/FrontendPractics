@@ -1,11 +1,16 @@
 import { useEffect, useState } from "react";
 import { IoMdAddCircleOutline } from "react-icons/io";
+import { ImSpinner } from "react-icons/im";
+import { MdCheckCircle } from "react-icons/md";
+import { MdCancel } from "react-icons/md";
 import UserCard from "../components/UserCard";
 import useApi from "../hooks/useApi";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [formData, setFormData] = useState({
     name: "",
     username: "",
@@ -24,9 +29,18 @@ const Users = () => {
 
   useEffect(() => {
     const fetchUsers = async () => {
-      const result = await getApi.execute();
-      if (result) {
-        setUsers(result);
+      try {
+        setLoading(true);
+        const result = await getApi.execute();
+        if (result) {
+          setUsers(result);
+        } else {
+          setError("Failed to find users.");
+        }
+      } catch (err) {
+        setError("An error occurred while fetching users.", err);
+      } finally {
+        setLoading(false);
       }
     };
     fetchUsers();
@@ -55,8 +69,8 @@ const Users = () => {
       },
     };
 
-    const postedUser = await postApi.execute(newUser);
-    if (postedUser) {
+    const postUser = await postApi.execute(newUser);
+    if (postUser) {
       setUsers([...users, newUser]);
       setFormData({
         name: "",
@@ -70,20 +84,24 @@ const Users = () => {
         companyName: "",
       });
       setShowModal(false);
+    } else {
+      setError("Failed to add user.");
     }
   };
 
   const handleDeleteUser = async (id) => {
-  const url = `https://jsonplaceholder.typicode.com/users/${id}`;
-  const result = await deleteApi.execute(null, url);
-  if (result !== null) {
-    setUsers(users.filter((user) => user.id !== id));
-  }
-};
+    const url = `https://jsonplaceholder.typicode.com/users/${id}`;
+    const result = await deleteApi.execute(null, url);
+    if (result !== null) {
+      setUsers(users.filter((user) => user.id !== id));
+    } else {
+      setError("Failed to delete user.");
+    }
+  };
 
   return (
     <div>
-      <div className="flex justify-center items-center">
+      <div className="flex justify-center items-center mt-6 mb-4 px-4">
         <button
           onClick={() => setShowModal(true)}
           className="flex items-center gap-2 bg-blue-600 border text-white px-4 py-2 rounded hover:bg-white hover:text-blue-600 border-blue-600 transition"
@@ -94,7 +112,7 @@ const Users = () => {
 
       {showModal && (
         <div className="fixed inset-0 bg-white bg-opacity-40 flex justify-center items-center z-50">
-          <div className="bg-white rounded-lg shadow-lg border border-green-900 p-6 w-full max-w-md relative">
+          <div className="bg-white rounded-lg shadow-lg border border-blue-900 p-6 sm:p-6 w-11/12 sm:max-w-md relative">
             <h2 className="text-xl font-semibold mb-4 text-green-800 text-center">
               Add New User
             </h2>
@@ -180,20 +198,20 @@ const Users = () => {
                 value={formData.zipcode}
                 onChange={handleInputChange}
               />
-              <div className="flex justify-between gap-6">
-                <button
-                  type="submit"
-                  className="w-1/2 bg-blue-700 text-white py-2 rounded hover:bg-blue-900"
-                >
-                  Add User
-                </button>
-                <button
-                  onClick={() => setShowModal(false)}
-                  className="w-1/2 bg-red-600 text-white py-2 rounded hover:bg-red-800"
-                >
-                  Cancel
-                </button>
-              </div>
+              <div className="flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-6">
+                  <button
+                    type="submit"
+                    className="flex items-center justify-center gap-2 flex-1 w-1/2 bg-blue-600 text-white py-2 rounded hover:bg-blue-800 transition-all duration-200"
+                  >
+                    <MdCheckCircle /> Add User
+                  </button>
+                  <button
+                    onClick={() => setShowModal(false)}
+                    className="flex items-center justify-center gap-2 flex-1 w-1/2 bg-red-600 text-white py-2 rounded hover:bg-red-800 transition-all duration-200"
+                  >
+                    <MdCancel /> Cancel
+                  </button>
+                </div>
             </form>
           </div>
         </div>
@@ -203,11 +221,23 @@ const Users = () => {
         <h1 className="text-2xl font-bold mb-6 text-center text-blue-800">
           All Users
         </h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {users.map((user) => (
-            <UserCard key={user.id} user={user} onDelete={handleDeleteUser} />
-          ))}
-        </div>
+        {loading ? (
+          <div className="flex justify-center items-center py-16">
+            <ImSpinner className="animate-spin text-4xl text-blue-600" />
+          </div>
+        ) : error ? (
+          <div className="text-center text-red-600 font-semibold">{error}</div>
+        ) : users.length === 0 ? (
+          <div className="text-center text-gray-500 py-10">
+            No users available.
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {users.map((user) => (
+              <UserCard key={user.id} user={user} onDelete={handleDeleteUser} />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

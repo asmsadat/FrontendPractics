@@ -25,7 +25,11 @@ function Signup() {
 
   return (
     <div className="flex justify-center items-center mt-20">
-      <form onSubmit={handleSubmit} className="bg-gray-100 p-8 rounded-lg shadow-md w-80">
+      <form
+        onSubmit={handleSubmit}
+        className="bg-gray-100 p-8 rounded-lg shadow-md w-80"
+      >
+        
         <h2 className="text-2xl font-semibold mb-6 text-center">Sign Up</h2>
         <input
           name="email"
@@ -49,7 +53,17 @@ function Signup() {
         >
           Sign Up
         </button>
-        <div className="mt-3 text-center">Already have an account?<br /> <Link to='/signin' className="text-blue-500 hover:text-blue-700">Sign in</Link> here.</div>
+        <div className="mt-4 text-center text-sm">
+          Already have an account?
+          <br />{" "}
+          <Link
+            to="/signin"
+            className="text-blue-500 hover:text-blue-700 underline"
+          >
+            Sign in
+          </Link>{" "}
+          here.
+        </div>
       </form>
     </div>
   );

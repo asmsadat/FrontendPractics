@@ -2,7 +2,7 @@ import { MdOutlineDelete } from "react-icons/md";
 
 const StudentCard = ({ student, onDelete }) => {
   return (
-    <div className="bg-white shadow-md rounded-lg border border-gray-200 p-6 hover:border-blue-900">
+    <div className="bg-gray-100 shadow-md rounded-lg border border-gray-200 p-6 hover:border-blue-900">
       <h2 className="text-lg font-semibold text-blue-900 mb-2">
         ID: {student.studentId}
       </h2>

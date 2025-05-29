@@ -7,6 +7,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import Courses from './../pages/Courses';
 import Dashboard from "../pages/Dashboard";
 import Users from './../pages/Users';
+import Profile from './../pages/Profile';
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,14 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <Dashboard />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/profile",
+        element: (
+          <ProtectedRoute>
+            <Profile />
           </ProtectedRoute>
         ),
       },

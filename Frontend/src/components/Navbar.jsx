@@ -21,7 +21,7 @@ const Navbar = () => {
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
   return (
-    <header className="sticky top-0 z-50 bg-white shadow-md">
+    <header className="sticky top-0 z-50 bg-blue-50 shadow-md">
       <div className="max-w-screen-2xl mx-auto px-4 py-4 md:py-6">
         <nav className="flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0">
           {/* left */}
@@ -66,6 +66,12 @@ const Navbar = () => {
               className="hover:text-blue-500 hover:underline decoration-2 underline-offset-4 transition-colors"
             >
               Dashboard
+            </Link>
+            <Link
+              to="/profile"
+              className="hover:text-blue-500 hover:underline decoration-2 underline-offset-4 transition-colors"
+            >
+              Profile
             </Link>
           </div>
 

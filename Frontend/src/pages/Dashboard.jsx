@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { IoMdAddCircleOutline } from "react-icons/io";
 
 const Dashboard = () => {
   const [students, setStudents] = useState([]);
@@ -76,9 +77,9 @@ const Dashboard = () => {
           <div className="flex justify-center">
             <button
               type="submit"
-              className="w-1/2  bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
+              className="flex items-center justify-center w-1/2 bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
             >
-              Add Student
+              <IoMdAddCircleOutline /> Add Student
             </button>
           </div>
         </form>

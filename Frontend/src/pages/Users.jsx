@@ -113,7 +113,7 @@ const Users = () => {
       {showModal && (
         <div className="fixed inset-0 bg-white bg-opacity-40 flex justify-center items-center z-50">
           <div className="bg-white rounded-lg shadow-lg border border-blue-900 p-6 sm:p-6 w-11/12 sm:max-w-md relative">
-            <h2 className="text-xl font-semibold mb-4 text-green-800 text-center">
+            <h2 className="text-xl font-semibold mb-4 text-blue-800 text-center">
               Add New User
             </h2>
             <form onSubmit={handleAddUser} className="space-y-4">

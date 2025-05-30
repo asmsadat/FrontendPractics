@@ -126,6 +126,13 @@ const Navbar = () => {
             >
               Dashboard
             </Link>
+            <Link
+              to="/profile"
+              className="block hover:text-blue-500 transition-colors"
+              onClick={toggleMenu}
+            >
+              Profile
+            </Link>
             {!isLoggedIn ? (
               <Link
                 to="/signin"
